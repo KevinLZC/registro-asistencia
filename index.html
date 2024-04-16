@@ -10,60 +10,15 @@
     <form id="registroForm">
         <label for="nombre">Nombre completo del estudiante:</label><br>
         <input type="text" id="nombre" name="nombre" required><br>
-
+        
         <label for="numeroCuenta">Número de cuenta:</label><br>
         <input type="text" id="numeroCuenta" name="numeroCuenta" required pattern="\d{8}" title="El número de cuenta debe tener 8 dígitos"><br>
-
+        
         <label for="gradoGrupo">Grado y grupo:</label><br>
         <input type="text" id="gradoGrupo" name="gradoGrupo" required pattern="[1-8][A-K]" title="El grado debe ser un número entre 1 y 8, y el grupo una letra entre A y K"><br>
-
+        
         <button type="submit">Registrar Asistencia</button>
     </form>
-
-    <script>
-        // Función para verificar si el nombre cumple con las condiciones
-        function validarNombre(nombre) {
-            // Verificar si el nombre tiene al menos un nombre y dos apellidos
-            return nombre.trim().split(/\s+/).length >= 3;
-        }
-
-        // Función para calcular el factor de asistencia según las reglas dadas
-        function calcularFactorAsistencia(gradoGrupo) {
-            const grupo = gradoGrupo.charAt(1);
-            if (grupo === 'A' || grupo === 'B' || grupo === 'C') {
-                return 2;
-            } else if (parseInt(gradoGrupo.charAt(0)) >= 4) {
-                return 3;
-            } else if (gradoGrupo === '7G') {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
-
-        // Función principal
-        function registrarAsistencia(event) {
-            event.preventDefault(); // Evitar que el formulario se envíe automáticamente
-
-            const nombre = document.getElementById("nombre").value;
-            const numeroCuenta = document.getElementById("numeroCuenta").value;
-            const gradoGrupo = document.getElementById("gradoGrupo").value;
-
-            // Validar la entrada
-            if (!validarNombre(nombre)) {
-                alert("El nombre no es válido. Debe tener al menos un nombre y dos apellidos.");
-                return;
-            }
-
-            // Calcular el factor de asistencia
-            const factorAsistencia = calcularFactorAsistencia(gradoGrupo);
-
-            alert("El factor de asistencia para el estudiante es: " + factorAsistencia);
-        }
-
-        // Obtener el formulario y agregar un listener para el evento submit
-        const formulario = document.getElementById("registroForm");
-        formulario.addEventListener("submit", registrarAsistencia);
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
